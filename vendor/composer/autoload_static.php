@@ -462,8 +462,8 @@ class ComposerStaticInitc0deb89efa997eba053459b4079eb31f
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces',
-            1 => __DIR__ . '/..' . '/league/uri',
+            0 => __DIR__ . '/..' . '/league/uri',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces',
         ),
         'League\\OAuth2\\Server\\' => 
         array (
@@ -856,6 +856,7 @@ class ComposerStaticInitc0deb89efa997eba053459b4079eb31f
         'App\\Models\\Gateway' => __DIR__ . '/../..' . '/app/Models/Gateway.php',
         'App\\Models\\Invoice' => __DIR__ . '/../..' . '/app/Models/Invoice.php',
         'App\\Models\\Media' => __DIR__ . '/../..' . '/app/Models/Media.php',
+        'App\\Models\\MerchantBanks' => __DIR__ . '/../..' . '/app/Models/MerchantBanks.php',
         'App\\Models\\MerchantCustomer' => __DIR__ . '/../..' . '/app/Models/MerchantCustomer.php',
         'App\\Models\\MerchantDetail' => __DIR__ . '/../..' . '/app/Models/MerchantDetail.php',
         'App\\Models\\MerchantEpos' => __DIR__ . '/../..' . '/app/Models/MerchantEpos.php',
@@ -1043,6 +1044,7 @@ class ComposerStaticInitc0deb89efa997eba053459b4079eb31f
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\BankServiceFactory' => __DIR__ . '/../..' . '/database/factories/BankServiceFactory.php',
+        'Database\\Factories\\MerchantBanksFactory' => __DIR__ . '/../..' . '/database/factories/MerchantBanksFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\BankSeeder' => __DIR__ . '/../..' . '/database/seeders/BankSeeder.php',
         'Database\\Seeders\\BankServiceSeeder' => __DIR__ . '/../..' . '/database/seeders/BankServiceSeeder.php',

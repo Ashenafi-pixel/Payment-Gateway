@@ -11,6 +11,7 @@ use App\Http\Controllers\Merchant\TransactionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Merchant\ProfileController;
 use App\Http\Controllers\Merchant\DashboardController;
+use App\Http\Controllers\MerchantBanksController;
 
 # Merchant Dashboard Routes
 Route::get('dashboard', [DashboardController::class, 'index'])->name(IUserRole::MERCHANT_ROLE.'.index');
@@ -58,3 +59,7 @@ Route::post('gateway-install/{id}',[MerchantGatewayController::class,'installGat
 
 # Transactions
 Route::get('transactions',[TransactionController::class,'getMerchantsAllTransactions'])->name(IUserRole::MERCHANT_ROLE.'.transactions.index');
+
+Route::get('banks',[MerchantBanksController::class,'index'])->name(IUserRole::MERCHANT_ROLE.'.bank');
+Route::get('{bank}/banks/create',[MerchantBanksController::class,'create'])->name(IUserRole::MERCHANT_ROLE.'.bank.create');
+Route::post('banks',[MerchantBanksController::class,'store'])->name(IUserRole::MERCHANT_ROLE.'.bank.store');

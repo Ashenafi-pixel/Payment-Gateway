@@ -97,6 +97,13 @@
                     <span>{{ __('Gateways') }}</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link s-links" href="{{ route(\App\Helpers\IUserRole::MERCHANT_ROLE.'.bank') }}">
+                    <img width='18' src="{{asset('images/icons/bank.svg')}}" alt="">
+                    <span>{{ __('Banks') }}</span>
+                </a>
+            </li>
         @endrole
         @role(\App\Helpers\IUserRole::MERCHANT_ROLE)
             <li class="nav-item">
