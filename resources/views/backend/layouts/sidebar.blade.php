@@ -288,7 +288,7 @@
         @if(Auth::user()->hasAnyPermission(['theme_read','theme_create','theme_edit','theme_delete']))
             <li class="nav-item">
                 <a class="nav-link s-links collapsed" href="#" aria-expanded="true" data-bs-toggle="collapse">
-                    <img width='18' src="{{asset('images/icons/frontend-icon.svg')}}" alt="">
+                    <img width='18' src="{{asset('images/icons/frontend-icon.svg')}}" alyoyt="">
                     <span>{{ __('Frontend Settings') }}</span>
                 </a>
             </li>
@@ -304,5 +304,3 @@
         @endif
     </ul>
 </div>
-
-

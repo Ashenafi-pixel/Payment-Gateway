@@ -101,7 +101,7 @@ class Builder
     /**
      * Execute the query and get the first result.
      *
-     * @param  array<model-property<TModelClass>|int, mixed>|string  $columns
+     * @param  array<int, (model-property<TModelClass>|'*')>|model-property<TModelClass>|'*'  $columns
      * @return TModelClass|null
      */
     public function first($columns = ['*']);
@@ -123,6 +123,15 @@ class Builder
      * @phpstan-return TModelClass
      */
     public function firstOrCreate(array $attributes, array $values = []);
+
+    /**
+     * Attempt to create the record. If a unique constraint violation occurs, attempt to find the matching record.
+     *
+     * @param  array<model-property<TModelClass>, mixed>  $attributes
+     * @param  array<model-property<TModelClass>, mixed>  $values
+     * @phpstan-return TModelClass
+     */
+    public function createOrFirst(array $attributes = [], array $values = []);
 
     /**
      * Create or update a record matching the attributes, and fill it with values.
@@ -468,6 +477,13 @@ class Builder
      * @return \Illuminate\Pagination\CursorPaginator<TModelClass>
      */
      public function cursorPaginate($perPage = null, $columns = ['*'], $cursorName = 'cursor', $cursor = null);
+
+    /**
+     * Get a lazy collection for the given query.
+     *
+     * @phpstan-return \Illuminate\Support\LazyCollection<int, TModelClass>
+     */
+    public function cursor();
 
      /**
       * Query lazily, by chunks of the given size.

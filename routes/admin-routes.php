@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MerchantController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Api\Customer\BankController;
+use App\Http\Controllers\BankServiceController;
 use App\Http\Controllers\Customer\LedgerController;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -56,7 +58,12 @@ Route::put('update-gateway/{gateway_id}', [GatewayController::class, 'updateGate
 
 # Banks Routes
 Route::get('banks', [BanksController::class, 'index'])->name('banks.index');
+Route::get('banks/{bank}/edit', [BanksController::class, 'edit'])->name('banks.edit');
+Route::patch('banks/{bank}', [BanksController::class, 'update'])->name('banks.update');
 
+Route::resource('{bank}/bank-service', BankServiceController::class);
+
+Route::get('update-service-status', [BanksController::class, 'updateServiceStatus']);
 # Currency Routes
 Route::get('currency', [CurrencyController::class, 'index'])->name('currency.index');
 

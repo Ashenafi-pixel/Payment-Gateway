@@ -29,11 +29,19 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-end animated zoomIn" aria-labelledby="action">
                             <a class="dropdown-item flex-mode"
-                               href="#">
+                               href="{{ route('admin.banks.edit', ['bank'=>$bank]) }}">
                                 <span class="material-symbols-outlined">
                                     edit_note
                                 </span>
                                 <span>{{ __('Edit') }}</span>
+                            </a>
+
+                            <a class="dropdown-item flex-mode"
+                               href="{{ route('admin.bank-service.index', ['bank'=>$bank]) }}">
+                                <span class="material-symbols-outlined">
+                                    Add
+                                </span>
+                                <span>{{ __('Services') }}</span>
                             </a>
                         </div>
                     </div>

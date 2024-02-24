@@ -72,6 +72,8 @@ Route::post('/process-payment', [Controllers\Auth\LockScreenController::class, '
 
 
 
+
+
 # Document Approval Routes
 Route::get('merchant/document-upload', [Controllers\Merchant\DocumentController::class, 'index'])->name(IUserRole::MERCHANT_ROLE.'.approval.documents');
 Route::get('customer/document-upload', [Controllers\Customer\DocumentController::class, 'index'])->name(IUserRole::CUSTOMER_ROLE.'.approval.documents');
