@@ -204,6 +204,7 @@ function sendOtp() {
     console.log('phone value:', phoneNumber);
     console.log('otpLabel element:', document.getElementById('otpLabel'));
     console.log('otpInput element:', document.getElementById('otpInput'));
+    let generatedOtp= generateRandomOtp();
 
     // Make an AJAX request to send OTP
     fetch('https://sms.qa.addissystems.et/api/send-bulk-sms', {
@@ -214,7 +215,7 @@ function sendOtp() {
         },
         body: JSON.stringify({
             phoneNumbers: [phoneNumber],
-            message: 'Your Addispay OTP code is: ' + generateRandomOtp(),
+            message: 'Your Addispay OTP code is: ' + generatedOtp,
         }),
     })
         .then(response => response.json())

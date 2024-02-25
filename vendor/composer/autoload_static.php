@@ -32,6 +32,7 @@ class ComposerStaticInitc0deb89efa997eba053459b4079eb31f
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
@@ -40,7 +41,6 @@ class ComposerStaticInitc0deb89efa997eba053459b4079eb31f
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '6b34c85f7b1ad6faa15aa12109e030f2' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
-        '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -151,6 +151,7 @@ class ComposerStaticInitc0deb89efa997eba053459b4079eb31f
             'Laravel\\Sail\\' => 13,
             'Laravel\\Passport\\Database\\Factories\\' => 36,
             'Laravel\\Passport\\' => 17,
+            'LaravelDaily\\PermissionsUI\\' => 27,
             'Larastan\\Larastan\\' => 18,
         ),
         'I' => 
@@ -528,6 +529,10 @@ class ComposerStaticInitc0deb89efa997eba053459b4079eb31f
         'Laravel\\Passport\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/passport/src',
+        ),
+        'LaravelDaily\\PermissionsUI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laraveldaily/laravel-permission-ui/src',
         ),
         'Larastan\\Larastan\\' => 
         array (
@@ -4051,6 +4056,12 @@ class ComposerStaticInitc0deb89efa997eba053459b4079eb31f
         'Larastan\\Larastan\\Types\\RelationParserHelper' => __DIR__ . '/..' . '/nunomaduro/larastan/src/Types/RelationParserHelper.php',
         'Larastan\\Larastan\\Types\\ViewStringType' => __DIR__ . '/..' . '/nunomaduro/larastan/src/Types/ViewStringType.php',
         'Larastan\\Larastan\\Types\\ViewStringTypeNodeResolverExtension' => __DIR__ . '/..' . '/nunomaduro/larastan/src/Types/ViewStringTypeNodeResolverExtension.php',
+        'LaravelDaily\\PermissionsUI\\Controllers\\Controller' => __DIR__ . '/..' . '/laraveldaily/laravel-permission-ui/src/Controllers/Controller.php',
+        'LaravelDaily\\PermissionsUI\\Controllers\\PermissionController' => __DIR__ . '/..' . '/laraveldaily/laravel-permission-ui/src/Controllers/PermissionController.php',
+        'LaravelDaily\\PermissionsUI\\Controllers\\RoleController' => __DIR__ . '/..' . '/laraveldaily/laravel-permission-ui/src/Controllers/RoleController.php',
+        'LaravelDaily\\PermissionsUI\\Controllers\\UserController' => __DIR__ . '/..' . '/laraveldaily/laravel-permission-ui/src/Controllers/UserController.php',
+        'LaravelDaily\\PermissionsUI\\Facades\\PermissionsUI' => __DIR__ . '/..' . '/laraveldaily/laravel-permission-ui/src/Facades/PermissionsUI.php',
+        'LaravelDaily\\PermissionsUI\\PermissionsUIServiceProvider' => __DIR__ . '/..' . '/laraveldaily/laravel-permission-ui/src/PermissionsUIServiceProvider.php',
         'Laravel\\Passport\\ApiTokenCookieFactory' => __DIR__ . '/..' . '/laravel/passport/src/ApiTokenCookieFactory.php',
         'Laravel\\Passport\\AuthCode' => __DIR__ . '/..' . '/laravel/passport/src/AuthCode.php',
         'Laravel\\Passport\\Bridge\\AccessToken' => __DIR__ . '/..' . '/laravel/passport/src/Bridge/AccessToken.php',

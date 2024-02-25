@@ -544,6 +544,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'laraveldaily/laravel-permission-ui' => array(
+            'pretty_version' => '0.1.4',
+            'version' => '0.1.4.0',
+            'reference' => '5aebd824ea3a44e0406868e5441aa0f433cb85e4',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laraveldaily/laravel-permission-ui',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'lcobucci/clock' => array(
             'pretty_version' => '3.0.0',
             'version' => '3.0.0.0',

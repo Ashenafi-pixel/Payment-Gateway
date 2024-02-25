@@ -32,6 +32,8 @@ use App\Http\Controllers\Api\Customer\UtilityPaymentController;
     Route::group(['prefix' => 'customer'],function (){
     # Customer Register Route
     Route::post('register',[RegisterController::class,'register']);
+
+    Route::post('save-otp',[RegisterController::class, 'storeOtp']);
     # Customer Login Route
     Route::post('login',[LoginController::class,'login']);
 

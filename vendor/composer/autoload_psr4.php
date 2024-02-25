@@ -84,6 +84,7 @@ return array(
     'Laravel\\Sail\\' => array($vendorDir . '/laravel/sail/src'),
     'Laravel\\Passport\\Database\\Factories\\' => array($vendorDir . '/laravel/passport/database/factories'),
     'Laravel\\Passport\\' => array($vendorDir . '/laravel/passport/src'),
+    'LaravelDaily\\PermissionsUI\\' => array($vendorDir . '/laraveldaily/laravel-permission-ui/src'),
     'Larastan\\Larastan\\' => array($vendorDir . '/nunomaduro/larastan/src'),
     'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src'),
     'Intervention\\Gif\\' => array($vendorDir . '/intervention/gif/src'),

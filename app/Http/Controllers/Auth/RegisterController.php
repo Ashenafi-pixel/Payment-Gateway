@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Repositories\UserRepo;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Auth\Events\Registered;
@@ -20,6 +21,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -185,6 +187,7 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
+        
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
@@ -234,4 +237,5 @@ class RegisterController extends Controller
             'type'  =>  IMediaType::IMAGE,
         ]);
     }
+
 }
