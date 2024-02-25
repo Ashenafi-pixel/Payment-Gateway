@@ -1,6 +1,7 @@
-@extends('PermissionsUI::layout')
-
+@extends('backend.layouts.app')
 @section('content')
+@include('PermissionsUI::layout')
+
     <div class="mb-4 flex">
         <a class="rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold text-white hover:bg-gray-700" href="{{ route(config('permission_ui.route_name_prefix') . 'roles.create') }}">{{ __('PermissionsUI::permissions.global.create') }}</a>
     </div>

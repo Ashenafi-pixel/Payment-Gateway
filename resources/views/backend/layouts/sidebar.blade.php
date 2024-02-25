@@ -277,12 +277,23 @@
             </a>
         </li>
         @role(\App\Helpers\IUserRole::ADMIN_ROLE)
-        <li class="nav-item">
-            <a class="nav-link s-links collapsed" href="#" aria-expanded="true" data-bs-toggle="collapse">
+         <li class="nav-item">
+            <a class="nav-link s-links collapsed {{ Request::is('admin/customers*') ? 'active' : '' }} " href="#premission" aria-expanded="true" aria-current="page" data-bs-toggle="collapse" aria-controls="premission">
+
                 <img width='18' src="{{asset('images/icons/admin-and-roles.svg')}}" alt="">
-                <span> Admin & Roles </span>
+                <span>{{ __('Admin & Roles') }}</span>
             </a>
-        </li>
+             <div class="collapse" id="premission">
+                 <ul class="nav inner-menu">
+                     <li>
+                         <a href="{{ route('permission_ui.users.index') }}">{{ __("Users") }}</a>
+                     </li>
+                     <li>
+                         <a href="{{ route('permission_ui.roles.index') }}">{{ __('Roles') }}</a>
+                     </li>
+                 </ul>
+             </div>
+        </li> 
         @endrole
         @role(\App\Helpers\IUserRole::MERCHANT_ROLE)
         <li class="nav-item">
@@ -294,8 +305,8 @@
         @endrole
         @if(Auth::user()->hasAnyPermission(['theme_read','theme_create','theme_edit','theme_delete']))
             <li class="nav-item">
-                <a class="nav-link s-links collapsed" href="#" aria-expanded="true" data-bs-toggle="collapse">
-                    <img width='18' src="{{asset('images/icons/frontend-icon.svg')}}" alyoyt="">
+                <a class="nav-link s-links collapsed" href="" aria-expanded="true" data-bs-toggle="collapse">
+                    <img width='18' src="{{asset('images/icons/frontend-icon.svg')}}" alt="">
                     <span>{{ __('Frontend Settings') }}</span>
                 </a>
             </li>

@@ -1,6 +1,7 @@
-@extends('PermissionsUI::layout')
-
+@extends('backend.layouts.app')
 @section('content')
+@include('PermissionsUI::layout')
+
     <form class="space-y-2" action="{{ route('permission_ui.users.update', $user) }}" method="post">
         @csrf
         @method('PATCH')

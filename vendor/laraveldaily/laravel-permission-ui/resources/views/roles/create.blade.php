@@ -1,6 +1,7 @@
-@extends('PermissionsUI::layout')
-
+@extends('backend.layouts.app')
 @section('content')
+@include('PermissionsUI::layout')
+
     <form class="space-y-4" action="{{ route(config('permission_ui.route_name_prefix') . 'roles.store') }}" method="post">
         @csrf
 

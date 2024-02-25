@@ -1,6 +1,10 @@
-@extends('PermissionsUI::layout')
 
+
+@extends('backend.layouts.app')
 @section('content')
+@include('PermissionsUI::layout')
+
+
     <div class="overflow-x-auto">
         <table class="w-full table-auto rounded-xl border border-gray-300 bg-white text-left shadow-sm divide-y">
             <thead>
