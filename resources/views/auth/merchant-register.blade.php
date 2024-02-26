@@ -70,7 +70,6 @@
                                             !!}
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             {!! Form::label('psw',__('Password:'),
@@ -96,7 +95,18 @@
                                             !!}
                                         </div>
                                     </div>
-
+{{--                                    <div class="col-12">--}}
+{{--                                        <div class="mb-3">--}}
+{{--                                            {!! Form::label('is_school',__('Is School:'),--}}
+{{--                                                ['class' => 'form-label input-label'])--}}
+{{--                                            !!}--}}
+{{--                                            {!! Form::select('is_school',--}}
+{{--                                            ['' => 'Please Select Type',true => 'YES', false => 'NO']--}}
+{{--                                                , null ,['class'=>"form-control form-control-lg",--}}
+{{--                                                'id' => "is_school", null])--}}
+{{--                                            !!}--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="w-100"></div>
                                     <div class="col-md-12">
                                         <div class="mb-3">
@@ -115,8 +125,7 @@
                                                 'id' => 'company_name','placeholder' => 'Enter Company Name',])
                                             !!}
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    </div><div class="col-md-6">
                                         <div class="mb-3">
                                             {!! Form::label('company_email',__('Company Email:'),
                                                 ['class' => 'form-label input-label'])
@@ -126,8 +135,7 @@
                                                 'id' => 'company_email','placeholder' => 'Enter Company Email',])
                                             !!}
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    </div><div class="col-md-6">
                                         <div class="mb-3">
                                             {!! Form::label('company_phone',__('Company Phone:'),
                                                 ['class' => 'form-label input-label'])
@@ -137,8 +145,7 @@
                                                 'id' => 'company_phone','placeholder' => 'Enter Company Phone',])
                                             !!}
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    </div><div class="col-md-6">
                                         <div class="mb-3">
                                             {!! Form::label('company_address',__('Company Address:'),
                                                 ['class' => 'form-label input-label'])
@@ -149,18 +156,14 @@
                                             !!}
                                         </div>
                                     </div>
-
-                                    <!-- OTP Section -->
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            {!! Form::label('otp', __('Phone OTP:'), ['class' => 'form-label input-label', 'id' => 'otpLabel', 'style' => 'display:none;']) !!}
-                                            {!! Form::text('otp', null, ['class' => 'form-control form-control-lg', 'id' => 'otpInput', 'placeholder' => 'Enter OTP', 'style' => 'display:none;']) !!}
-                                            
-                                            {!! Form::button(__('Signup'), ['class' => 'btn btn-theme-effect mt-2', 'type' => 'submit', 'id' => 'signupBtn']) !!}
-                                        </div>
-                                    </div>
                                 </div>
+                                {!! Form::button( __('Signup') ,['class' => 'btn btn-theme-effect w-100 mt-2','type'=>'submit']) !!}
                                 {!! Form::close() !!}
+                                <div class="mt-4 text-center ">
+                                    <a href="{{ route('login') }}" class="c-link">
+                                        {!! __('I have an account') !!} <span>{{ __('Login') }}</span>
+                                    </a>
+                                </div>
                                 <div class="mt-1 text-center ">
                                     <a href="{{ route('register') }}" class="c-link">
                                         {{ __('Signup as') }} <span>{{ __('Customer') }}</span>
@@ -170,88 +173,11 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 @endsection
 @push('js')
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('sendOtpBtn').addEventListener('click', function () {
-        // Check if the button is disabled to prevent multiple clicks
-        if (!this.hasAttribute('disabled')) {
-            sendOtp();
-        }
-    });
-
-    document.getElementById('signupBtn').addEventListener('click', function (event) {
-        // Prevent form submission if the "Signup" button is disabled
-        if (this.hasAttribute('disabled')) {
-            event.preventDefault();
-            alert('Please verify your phone number first.');
-            // You can add additional logic or UI feedback here
-        }
-    });
-});
-
-function sendOtp() {
-    // Disable the "Send OTP" button to prevent multiple clicks
-    document.getElementById('sendOtpBtn').setAttribute('disabled', 'disabled');
-
-    const phoneNumber = document.getElementById('phone').value;
-    const apiKey = '30c57d27443e3d76d4b8c257c0a1f4d163344b14a68e312122';
-
-    console.log('phone value:', phoneNumber);
-    console.log('otpLabel element:', document.getElementById('otpLabel'));
-    console.log('otpInput element:', document.getElementById('otpInput'));
-
-    // Make an AJAX request to send OTP
-    fetch('https://sms.qa.addissystems.et/api/send-bulk-sms', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key':  apiKey,
-        },
-        body: JSON.stringify({
-            phoneNumbers: [phoneNumber],
-            message: 'Your Addispay OTP code is: ' + generateRandomOtp(),
-        }),
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('API Response:', data); // Log the response to the console
-
-            if (data.message && data.message.includes("SMS sent")) {
-                showOtpInput();
-                // Change button text to "Verify OTP"
-                // Verify if the element exists before trying to access it
-                const verifyOtpBtn = document.getElementById('verifyOtpBtn');
-                if (verifyOtpBtn) {
-                    verifyOtpBtn.innerText = 'Verify OTP';
-                }
-                document.getElementById('sendOtpBtn').style.display = 'none';
-                alert('OTP sent successfully!');
-            } else {
-                alert('Failed to send OTP. Please try again.');
-            }
-        })
-        .catch(error => {
-            console.error('Error sending OTP:', error);
-            alert('Failed to send OTP. Please try again.');
-        })
-        .finally(() => {
-            // Enable the "Verify OTP" button
-            document.getElementById('verifyOtpBtn').removeAttribute('disabled');
-        });
-}
-
-function generateRandomOtp() {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-}
-
-function showOtpInput() {
-    document.getElementById('otpLabel').style.display = 'block';
-    document.getElementById('otpInput').style.display = 'block';
-}
-</script>
 @endpush
+

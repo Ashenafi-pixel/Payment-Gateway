@@ -582,9 +582,13 @@ abstract class GeneralHelper
      */
     public static function VERIFY_OTP_FOR_API($received_otp): bool
     {
-        $otp = GeneralHelper::USER('email_otp');
-        return $otp == $received_otp;
+        $email_otp = GeneralHelper::USER('email_otp');
+        $phone_otp = GeneralHelper::USER('phone_otp');
+    
+        // Compare both email_otp and phone_otp with the received OTP
+        return $email_otp == $received_otp || $phone_otp == $received_otp;
     }
+    
 
     /**
      * @param $status

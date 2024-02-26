@@ -8,6 +8,7 @@
         "php": "^8.1.9|^8.2.0",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",
+        "illuminate/http": "*",
         "intervention/image": "^3.2",
         "laravel/framework": "^9.19",
         "laravel/passport": "^11.8",

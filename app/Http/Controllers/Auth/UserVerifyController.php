@@ -26,6 +26,7 @@ class UserVerifyController extends Controller
 
     #Views
     const OTP_VIEW = 'auth.passwords.otp';
+    const OTP_PHONE_VIEW = 'auth.passwords.phoneotp';
 
     const CUSTOMER_DASHBOARD_ROUTE = IUserRole::CUSTOMER_ROLE . '.index';
 
@@ -45,6 +46,14 @@ class UserVerifyController extends Controller
     {
         $customer = GeneralHelper::USER();
         return view(self::OTP_VIEW, compact('customer'));
+    }
+    /**
+     * @return Application|Factory|View
+     */
+    public function showMerchantVerifyForm()
+    {
+        $merchant = GeneralHelper::USER();
+        return view(self::OTP_PHONE_VIEW, compact('merchant'));
     }
 
     /**

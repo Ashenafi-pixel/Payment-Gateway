@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="card-tools">
-                    <a href="{{ route('admin.bank-service.create', ['bank' => $bank]) }}" class="btn btn-primary btn-sm">
+                    <a href="{{ route('admin.bank-service.create', ['bank' => $bank]) }}" class="btn btn-theme-effect mt-2">
                         Add Service
                     </a>
                 </div>

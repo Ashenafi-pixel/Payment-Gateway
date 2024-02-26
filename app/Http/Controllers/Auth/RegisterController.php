@@ -135,12 +135,20 @@ class RegisterController extends Controller
     {
         // merchant create
         $merchant = $this->_userRepo->create($this->_filterCreateUserRequest($data));
+
+        // Store the OTP in the user's phone_otp field
+        $merchant->phone_otp = $data['phone_otp'];
+
+        // Save the changes to the database
+        $merchant->save();
+
         $merchant->merchantDetail()->create([
             'company_name'    => $data['company_name'],
             'company_phone'   => $data['company_phone'],
             'company_email'   => $data['company_email'],
             'company_address' => $data['company_address'],
         ]);
+
         // get merchant role and assign to merchant
         $role = $this->_roleService->getMerchantRoleExist();
         if(!empty($role))
@@ -213,15 +221,19 @@ class RegisterController extends Controller
     {
         $this->merchantValidator($request->all())->validate();
 
-        $user = $this->merchantStore($request->all());
+        // Generate random OTP
+        $otp = mt_rand(100000, 999999);
 
-        $this->guard()->login($user);
+        // Store the OTP in the user's phone_otp field
+        $user = $this->merchantStore(array_merge($request->all(), ['phone_otp' => $otp]));
 
-        if ($response = $this->registered($request, $user)) {
-            return GeneralHelper::SEND_RESPONSE($response, true, $this->redirectTo(),self::REDIRECTING_MERCHANT_MSG);
-        }
-        return GeneralHelper::SEND_RESPONSE($request, true, $this->redirectTo(),self::REDIRECTING_MERCHANT_MSG);
-    }
+         $this->guard()->login($user);
+
+     if ($response = $this->registered($request, $user)) {
+             return GeneralHelper::SEND_RESPONSE($response, true, $this->redirectTo(),self::REDIRECTING_MERCHANT_MSG);
+         }
+         return GeneralHelper::SEND_RESPONSE($request, true, $this->redirectTo(),self::REDIRECTING_MERCHANT_MSG);
+     }
 
     /**
      * @param $user

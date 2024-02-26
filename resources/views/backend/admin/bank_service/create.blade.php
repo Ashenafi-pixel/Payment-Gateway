@@ -21,7 +21,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-md-1">
-                            <button class="form-control btn-primary btn-sm" type="submit">
+                            <button class="btn btn-theme-effect mt-2" type="submit">
                                 Submit
                             </button>
                         </div>

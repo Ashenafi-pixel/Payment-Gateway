@@ -60,6 +60,8 @@ Route::get('/reset-password-form/{token}', [Controllers\Auth\ResetPasswordContro
 Route::get('email-otp-verify/{token}', [Controllers\Auth\EmailVerifyController::class, 'index'])->name('user.email.token.form');
 # Verify Customer using Phone with OTP Routes
 Route::get('verify-user', [UserVerifyController::class,'showCustomerVerifyForm'])->name(IUserRole::CUSTOMER_ROLE.'.profile.verify.otp.form');
+Route::get('verify-merchant', [UserVerifyController::class,'showMerchantVerifyForm'])->name(IUserRole::MERCHANT_ROLE.'.profile.verify.otp.form');
+
 Route::post('resend-verify-otp',[UserVerifyController::class,'resendVerifyOtp'])->name(IUserRole::CUSTOMER_ROLE.'.profile.resend.otp');
 Route::post('verify-user-otp', [UserVerifyController::class,'verifyCustomerOtp'])->name(IUserRole::CUSTOMER_ROLE.'.profile.verify.otp');
 

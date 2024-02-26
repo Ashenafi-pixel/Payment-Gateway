@@ -57,7 +57,11 @@ Route::get('update-gateway/{gateway_id}', [GatewayController::class, 'editGatewa
 Route::put('update-gateway/{gateway_id}', [GatewayController::class, 'updateGatewayForm'])->name('gateway.update');
 
 # Banks Routes
+
+Route::get('admin/banks/create', [BanksController::class, 'create'])->name('banks.create');
+Route::post('banks', [BanksController::class, 'store'])->name('banks.store');
 Route::get('banks', [BanksController::class, 'index'])->name('banks.index');
+
 Route::get('banks/{bank}/edit', [BanksController::class, 'edit'])->name('banks.edit');
 Route::patch('banks/{bank}', [BanksController::class, 'update'])->name('banks.update');
 
