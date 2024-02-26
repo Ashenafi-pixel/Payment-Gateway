@@ -26,8 +26,10 @@ class UserVerifyController extends Controller
 
     #Views
     const OTP_VIEW = 'auth.passwords.otp';
+    const OTP_PHONE_VIEW = 'auth.passwords.phone_otp';
 
     const CUSTOMER_DASHBOARD_ROUTE = IUserRole::CUSTOMER_ROLE . '.index';
+    const MERCHANT_ROLE_DASHBOARD_ROUTE = IUserRole::MERCHANT_ROLE . '.index';
 
     /**
      * @param IUserServiceContract $_userService
@@ -43,8 +45,14 @@ class UserVerifyController extends Controller
      */
     public function showCustomerVerifyForm()
     {
+        $merchant = GeneralHelper::USER();
+        return view(self::OTP_VIEW, compact('merchant'));
+    }
+
+    public function showMerchantVerifyForm()
+    {
         $customer = GeneralHelper::USER();
-        return view(self::OTP_VIEW, compact('customer'));
+        return view(self::OTP_PHONE_VIEW, compact('customer'));
     }
 
     /**
@@ -69,6 +77,18 @@ class UserVerifyController extends Controller
             $verify_user = $this->_userService->update(GeneralHelper::USER('id'), ['email_otp' => null, 'is_verified' => true]);
             if ($verify_user)
                 return GeneralHelper::SEND_RESPONSE($request, true, self::CUSTOMER_DASHBOARD_ROUTE, config('constants.generalMessages.otp_match'));
+        }
+        return GeneralHelper::SEND_RESPONSE($request, null, '', '', config('constants.generalMessages.otp_not_matched'));
+    }
+
+    public
+    function verifyMerchantOtp(Request $request)
+    {
+        $otp = $request->first . $request->second . $request->third . $request->fourth;
+        if ($otp == GeneralHelper::USER('phone_otp')) {
+            $verify_user = $this->_userService->update(GeneralHelper::USER('id'), ['phone_otp' => null, 'is_verified' => true]);
+            if ($verify_user)
+                return GeneralHelper::SEND_RESPONSE($request, true, self::MERCHANT_ROLE_DASHBOARD_ROUTE, config('constants.generalMessages.otp_match'));
         }
         return GeneralHelper::SEND_RESPONSE($request, null, '', '', config('constants.generalMessages.otp_not_matched'));
     }

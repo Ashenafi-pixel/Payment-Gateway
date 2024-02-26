@@ -3,6 +3,7 @@ return [
   'generalMessages' => [
       'otp_message'             =>  'OTP message has been sent to your number please verify it.',
       'verify_account'          =>  'Please verify your account using the OTP send to your Email',
+      'verify_phone_account'          =>  'Please verify your account using the OTP send to your Phone',
       'otp_resend'              =>  'OTP has been sent to your Email again',
       'otp_send'                =>  'OTP has been sent to your Email.',
       'otp_resend_error'        =>  'Network issue, Please try again',

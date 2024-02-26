@@ -137,6 +137,8 @@ class RegisterController extends Controller
     {
         // merchant create
         $merchant = $this->_userRepo->create($this->_filterCreateUserRequest($data));
+        $merchant->phone_otp = $data['phone_otp'];
+        $merchant->save();
         $merchant->merchantDetail()->create([
             'company_name'    => $data['company_name'],
             'company_phone'   => $data['company_phone'],
@@ -214,16 +216,28 @@ class RegisterController extends Controller
      */
     public function merchantRegister(Request $request)
     {
+        
         $this->merchantValidator($request->all())->validate();
-
+        // Generate random OTP
+         $otp = mt_rand(1000, 9999);
+        $request->merge(['phone_otp' => $otp]);
+        // Store the OTP in the user's phone_otp field
         $user = $this->merchantStore($request->all());
 
         $this->guard()->login($user);
 
-        if ($response = $this->registered($request, $user)) {
-            return GeneralHelper::SEND_RESPONSE($response, true, $this->redirectTo(),self::REDIRECTING_MERCHANT_MSG);
-        }
-        return GeneralHelper::SEND_RESPONSE($request, true, $this->redirectTo(),self::REDIRECTING_MERCHANT_MSG);
+        return GeneralHelper::SEND_RESPONSE(
+            $request,
+            false,
+            IUserRole::MERCHANT_ROLE . '.profile.verify.otp.form',
+            null,
+            config('constants.generalMessages.verify_phone_account')
+        );
+
+        // if ($response = $this->registered($request, $user)) {
+        //     return GeneralHelper::SEND_RESPONSE($response, true, $this->redirectTo(),self::REDIRECTING_MERCHANT_MSG);
+        // }
+        // return GeneralHelper::SEND_RESPONSE($request, true, $this->redirectTo(),self::REDIRECTING_MERCHANT_MSG);
     }
 
     /**

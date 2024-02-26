@@ -50,6 +50,10 @@ Auth::routes();
 # Merchant signup flow
 Route::get('merchant-register', [Controllers\Auth\RegisterController::class,'merchantCreate'])->name(IUserRole::MERCHANT_ROLE.'.register.form');
 Route::post('merchant-register', [Controllers\Auth\RegisterController::class,'merchantRegister'])->name(IUserRole::MERCHANT_ROLE.'.register');
+Route::get('verify-merchant', [UserVerifyController::class, 'showMerchantVerifyForm'])->name(IUserRole::MERCHANT_ROLE . '.profile.verify.otp.form');
+Route::post('verify-merchant-otp', [UserVerifyController::class, 'verifyMerchantOtp'])->name(IUserRole::MERCHANT_ROLE . '.profile.verify.otp');
+
+
 # Forgot Password Routes
 Route::get('forgot-password', [Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('user.forgot.password');
 Route::post('send/forgot-password/link', [Controllers\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('user.forgot.password.link');
